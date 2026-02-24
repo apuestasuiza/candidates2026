@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Candidates 2026 — Apuestas</title>
+<title>Apuestas 2026 (SUIZOS)</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <script type="module">
@@ -326,7 +326,7 @@ select option{background:#111722}
   <div class="hdr">
     <div>
       <div class="eyebrow">FIDE Candidates Tournament</div>
-      <h1>Apuestas<br><em>2026</em></h1>
+      <h1>Apuestas <em>2026</em><br><span style="font-size:clamp(18px,3vw,28px);color:var(--mut2);font-style:italic;font-weight:700">(SUIZOS)</span></h1>
       <div class="live" id="liveEl" style="color:var(--mut)">Conectando…</div>
     </div>
     <div class="meta">
@@ -856,6 +856,7 @@ function renderLB(){
   const users={};
   const ens = u => { if(!users[u]) users[u]={hits:0,pts:0}; };
   Object.entries(allBets).forEach(([u,d]) => {
+    if (u === ADMIN_USER) return; // admin no aparece en el ranking
     ens(u);
     if (d.champion && results.champion && d.champion.player===results.champion){ users[u].hits++; users[u].pts+=5; }
     Object.entries(d.matches||{}).forEach(([k,b]) => {
